@@ -14,13 +14,13 @@ export class Usuario extends Entity {
     required: true,
   })
   nombre: string;
-
-  // @property({
-  //   type: 'string',
-  //   required: true,
-  // })
-  // email: string;
-
+  /*
+    @property({
+      type: 'string',
+      required: true,
+    })
+    email: string;
+  */
   @property({
     type: 'string',
     required: true,
@@ -38,7 +38,6 @@ export class Usuario extends Entity {
     required: true,
   })
   estado: string;
-
 
 
   // Define well-known properties here

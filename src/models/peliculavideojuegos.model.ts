@@ -23,12 +23,6 @@ export class Peliculavideojuegos extends Entity {
 
   @property({
     type: 'string',
-    required: true,
-  })
-  tipo: string;
-
-  @property({
-    type: 'string',
   })
   imagen?: string;
 
@@ -36,7 +30,8 @@ export class Peliculavideojuegos extends Entity {
     type: 'array',
     itemType: 'object',
   })
-  comentarios?: object[];
+  comentario?: object[];
+
 
   // Define well-known properties here
 

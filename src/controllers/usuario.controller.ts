@@ -4,18 +4,12 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
@@ -23,8 +17,8 @@ import {UsuarioRepository} from '../repositories';
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
-    public usuarioRepository : UsuarioRepository,
-  ) {}
+    public usuarioRepository: UsuarioRepository,
+  ) { }
 
   @post('/usuarios')
   @response(200, {
@@ -45,6 +39,24 @@ export class UsuarioController {
     usuario: Omit<Usuario, 'id'>,
   ): Promise<Usuario> {
     return this.usuarioRepository.create(usuario);
+  }
+  @get('/usuarios/findByUsername/{username}')
+  @response(200, {
+    description: 'Array of Usuario model instances',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+          items: getModelSchemaRef(Usuario, {includeRelations: true}),
+        },
+      },
+    },
+  })
+  async findByUsername(
+    @param.path.string('username') username: string,
+    @param.filter(Usuario) filter?: Filter<Usuario>,
+  ): Promise<Usuario[]> {
+    return this.usuarioRepository.find({where: {nombre:username}});
   }
 
   @get('/usuarios/count')

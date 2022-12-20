@@ -4,12 +4,12 @@ import {juggler} from '@loopback/repository';
 const config = {
   name: 'mongo',
   connector: 'mongodb',
-  url: 'mongodb://localhost:27017/peliculasyvideojuegos',
-  host: 'localhost',
+  url: 'mongodb+srv://equipo2bdmongo:mongodb2027@cluster0.waoc7.mongodb.net/mongo?retryWrites=true&w=majority',
+  host: '27017',
   port: 27017,
-  user: 'root',
-  password: '',
-  database: 'peliculasyvideojuegos',
+  user: 'equipo2bdmongo',
+  password: 'mongodb2027mongodb2027',
+  database: 'mongo',
   useNewUrlParser: false
 };
 
